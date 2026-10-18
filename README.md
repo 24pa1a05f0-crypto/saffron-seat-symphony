@@ -89,7 +89,7 @@ The project is a TanStack Start app, so Vercel can run it including server-side 
    | `SUPABASE_PUBLISHABLE_KEY` | same value as `VITE_SUPABASE_PUBLISHABLE_KEY` |
 
 5. Click **Deploy**. Vercel gives you a URL like `your-project.vercel.app`.
-6. Email sign-in and Google sign-in only work from allowed URLs — share the Vercel URL and the redirect URLs below will be added for you.
+6. After deploying, add the new Vercel URL (for example `https://your-project.vercel.app`) to the authentication provider's allowed redirect URLs, or sign-in will not work from the Vercel domain.
 
 ## Screenshots
 _Add screenshots of the home, reserve, bookings and admin pages here._
