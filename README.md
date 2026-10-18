@@ -63,9 +63,33 @@ bunx vitest run
 The **first account to register** automatically becomes admin (via a database trigger on signup). Everyone after that is a customer. Register your own account first after deploying.
 
 ## Deployment
-Deployed with Lovable's hosting (free tier): click **Publish** in the editor. Database changes apply automatically; frontend changes go live after clicking **Update** in the publish dialog.
 
-Live URL: https://saffron-seat-symphony.lovable.app
+Live URL (Lovable hosting): https://saffron-seat-symphony.lovable.app
+
+Deployed with Lovable's hosting: click **Publish** in the editor. Database changes apply automatically; frontend changes go live after clicking **Update** in the publish dialog.
+
+### Deploying to Vercel instead
+
+The project is a TanStack Start app, so Vercel can run it including server-side rendering and server functions (the database stays on Lovable Cloud — nothing else to migrate).
+
+1. Connect this repository to GitHub: in the Lovable editor, **Project settings → Git → Connect**. Every change then syncs automatically.
+2. On [vercel.com](https://vercel.com), click **Add New → Project** and import the repository.
+3. In the import screen, set:
+   - **Framework Preset:** Vite (auto-detected)
+   - **Build Command:** `npm run build`
+   - **Node.js Version:** 22 (Settings → General → Node.js Version)
+4. Add environment variables (Settings → Environment Variables). Copy the values from the `.env` file in the repository:
+
+   | Name | Value |
+   |------|-------|
+   | `VITE_SUPABASE_URL` | from `.env` |
+   | `VITE_SUPABASE_PUBLISHABLE_KEY` | from `.env` |
+   | `VITE_SUPABASE_PROJECT_ID` | from `.env` |
+   | `SUPABASE_URL` | same value as `VITE_SUPABASE_URL` |
+   | `SUPABASE_PUBLISHABLE_KEY` | same value as `VITE_SUPABASE_PUBLISHABLE_KEY` |
+
+5. Click **Deploy**. Vercel gives you a URL like `your-project.vercel.app`.
+6. After deploying, add the new Vercel URL (for example `https://your-project.vercel.app`) to the authentication provider's allowed redirect URLs, or sign-in will not work from the Vercel domain.
 
 ## Screenshots
 _Add screenshots of the home, reserve, bookings and admin pages here._
