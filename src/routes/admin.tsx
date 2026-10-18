@@ -6,7 +6,7 @@ import type { Database, Tables } from "@/integrations/supabase/types";
 import { RequireAuth } from "@/components/RequireAuth";
 import { PageTitle, StatusBadge } from "@/components/SiteLayout";
 import { Input } from "@/components/ui/input";
-import { formatDate } from "./bookings";
+import { formatDate } from "@/lib/restaurant";
 
 type Status = Database["public"]["Enums"]["reservation_status"];
 

@@ -7,6 +7,7 @@ import { useAuth } from "@/lib/auth";
 import { RequireAuth } from "@/components/RequireAuth";
 import { PageTitle, StatusBadge } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
+import { formatDate } from "@/lib/restaurant";
 
 export const Route = createFileRoute("/bookings")({
   head: () => ({
@@ -20,7 +21,6 @@ export const Route = createFileRoute("/bookings")({
   component: () => <RequireAuth><Bookings /></RequireAuth>,
 });
 
-export const formatDate = (d: string) => new Date(d + "T00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
 
 function Bookings() {
   const { user } = useAuth();
