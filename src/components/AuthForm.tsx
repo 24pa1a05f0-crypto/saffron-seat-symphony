@@ -30,7 +30,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
     const checks = [emailSchema.safeParse(email), passwordSchema.safeParse(password)];
     if (mode === "register") checks.unshift(nameSchema.safeParse(name));
     const failed = checks.find((c) => !c.success);
-    if (failed && !failed.success) { setError(failed.error.issues[0].message); return; }
+    if (failed && !failed.success) { setError(failed.error.issues[0]?.message ?? "Invalid input"); return; }
 
     setBusy(true);
     if (mode === "register") {

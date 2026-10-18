@@ -42,7 +42,7 @@ function ReserveForm() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    customer_name: (user?.user_metadata?.full_name as string) ?? "",
+    customer_name: (user?.user_metadata?.["full_name"] as string) ?? "",
     phone: "", email: user?.email ?? "",
     reservation_date: "", reservation_time: "", guests: 2, special_request: "",
   });
@@ -69,7 +69,7 @@ function ReserveForm() {
 
   const isPastSlot = (t: string) => {
     if (form.reservation_date !== todayIST()) return false;
-    const [h, m] = t.split(":").map(Number);
+    const [h = 0, m = 0] = t.split(":").map(Number);
     return h * 60 + m <= nowMinutesIST();
   };
 
@@ -77,7 +77,7 @@ function ReserveForm() {
     e.preventDefault();
     setError(null);
     const parsed = schema.safeParse(form);
-    if (!parsed.success) { setError(parsed.error.issues[0].message); return; }
+    if (!parsed.success) { setError(parsed.error.issues[0]?.message ?? "Invalid input"); return; }
     setBusy(true);
     // The database re-checks hours, past dates and seat capacity before saving.
     const { error } = await supabase.from("reservations").insert({
