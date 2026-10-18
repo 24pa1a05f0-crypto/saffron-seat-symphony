@@ -38,8 +38,8 @@ supabase/        database migrations
 Prerequisites: [Bun](https://bun.sh) (or Node.js 20+), Git.
 
 ```bash
-git clone https://github.com/<your-username>/restaurant-reservation-system.git
-cd restaurant-reservation-system
+git clone https://github.com/<your-username>/restro.git
+cd restro
 bun install
 bun run dev
 ```
