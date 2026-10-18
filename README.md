@@ -65,7 +65,7 @@ The **first account to register** automatically becomes admin (via a database tr
 ## Deployment
 Deployed with Lovable's hosting (free tier): click **Publish** in the editor. Database changes apply automatically; frontend changes go live after clicking **Update** in the publish dialog.
 
-Live URL: _add after publishing_
+Live URL: https://saffron-seat-symphony.lovable.app
 
 ## Screenshots
 _Add screenshots of the home, reserve, bookings and admin pages here._
